@@ -24,14 +24,14 @@ class Normal(commands.Cog):
 
     @commands.command()
     async def rune(self, context, champion, role=None):
-        close_matches = difflib.get_close_matches(champion, champs, 1, 0.4)[0]
+        close_matches = difflib.get_close_matches(champion, champs, 1, 0.7)
         if close_matches:
             if role is None:
-                role = json_data[close_matches]
+                role = json_data[close_matches[0]]
             else:
                 role = difflib.get_close_matches(role, ['jungle', 'middle', 'adc', 'top', 'support'], 1, 0.4)[0]
-            await context.send(f"{champion}'s rune", file=discord.File(self.Rune.get_rune(close_matches, role)))
-            os.remove(f"{close_matches}.png")
+            await context.send(f"{champion}'s rune", file=discord.File(self.Rune.get_rune(close_matches[0], role)))
+            os.remove(f"{close_matches[0]}.png")
         else:
             await context.send("Sorry we cannot find this champion!")
 

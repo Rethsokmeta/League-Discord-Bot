@@ -43,5 +43,6 @@ class League:
         image = self.driver.find_element(By.CLASS_NAME, 'recommended-build_runes').screenshot_as_png
         im = Image.open(BytesIO(image))
         im.save(f'{champion}.png')
+        self.driver.back()
         return f'{champion}.png'
 

@@ -1,7 +1,7 @@
 import os
 from discord.ext import commands
 
-token = 'DISCORD_TOKEN'
+token = os.getenv('DISCORD_TOKEN')
 bot = commands.Bot(command_prefix="-")
 
 

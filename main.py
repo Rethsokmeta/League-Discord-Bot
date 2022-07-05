@@ -11,15 +11,20 @@ async def on_ready():
 
 
 def load_ext(command):
+    print(command)
     for file in os.listdir(f'./cogs/{command}'):
         if file.endswith(".py"):
             extension = file[:-3]
+            print(extension)
             try:
                 bot.load_extension(f"cogs.{command}.{extension}")
                 print(f"-----Extension {extension} is loaded-----")
 
-            except Exception :
-                print(f"-----Failed to load {extension}: {Exception}-----")
+
+            except Exception as e:
+
+                exception = f"{type(e).__name__}: {e}"
+                print(f"Failed to load extension {extension}\n{exception}")
 
 
 if __name__ == "__main__":

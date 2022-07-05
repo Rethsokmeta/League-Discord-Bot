@@ -31,7 +31,10 @@ class Normal(commands.Cog):
             else:
                 role = difflib.get_close_matches(role, ['jungle', 'middle', 'adc', 'top', 'support'], 1, 0.4)[0]
             await context.send(f"{champion}'s rune", file=discord.File(self.Rune.get_rune(close_matches[0], role)))
-            os.remove(f"{close_matches[0]}.png")
+            try:
+                os.remove(f"{close_matches[0]}.png")
+            except:
+                print(f"No {champion}.png to delete")
         else:
             await context.send("Sorry we cannot find this champion!")
 

@@ -10,7 +10,7 @@ async def on_ready():
     print(f"-----{bot.user.name} is logged in-----")
 
 
-def load_extension(command):
+def load_ext(command):
     for file in os.listdir(f'./cogs/{command}'):
         if file.endswith(".py"):
             extension = file[:-3]
@@ -23,6 +23,6 @@ def load_extension(command):
 
 
 if __name__ == "__main__":
-    load_extension("command")
+    load_ext("command")
 
 bot.run(token)

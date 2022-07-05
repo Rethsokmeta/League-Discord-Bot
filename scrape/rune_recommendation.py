@@ -12,7 +12,7 @@ class League:
     options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     options.headless = True
     options.add_argument("--window-size=1920,1080")
-    driver = webdriver.Chrome(options=options, executable_path="CHROMEDRIVER_PATH")
+    driver = webdriver.Chrome(options=options, executable_path=os.environ.get("CHROMEDRIVER_PATH"))
 
     def get_rune(self, champion, role):
         # All the recommended runes are from u.gg

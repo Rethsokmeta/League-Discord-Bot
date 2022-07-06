@@ -11,11 +11,9 @@ async def on_ready():
 
 
 def load_ext(command):
-    print(command)
     for file in os.listdir(f'./cogs/{command}'):
         if file.endswith(".py"):
             extension = file[:-3]
-            print(extension)
             try:
                 bot.load_extension(f"cogs.{command}.{extension}")
                 print(f"-----Extension {extension} is loaded-----")
